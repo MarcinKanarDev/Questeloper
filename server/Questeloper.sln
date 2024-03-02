@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BBBD8043-7F40-4169-9D80-A6C5CD7C25CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Questeloper.Api", "src\Questeloper.Api\Questeloper.Api.csproj", "{B1DF6C2E-9D37-47CB-B819-0DBA5B3C75E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Questeloper.Application", "src\Questeloper.Application\Questeloper.Application.csproj", "{856C6695-A81D-484F-8838-2D83A61FA9FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Questeloper.Domain", "src\Questeloper.Domain\Questeloper.Domain.csproj", "{2A0EB250-4F04-4746-A4A3-458704D7614C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Questeloper.Infrastructure", "src\Questeloper.Infrastructure\Questeloper.Infrastructure.csproj", "{BAF9A2C3-1F89-47F2-B710-27FA24362F8D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B383B924-C72A-47E5-BBCC-FE0F47CAAD14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Questeloper.Tests.Integration", "tests\Questeloper.Tests.Integration\Questeloper.Tests.Integration.csproj", "{0CBC041C-39FF-426C-A3A7-592C243EA1DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Questeloper.Tests.Unit", "tests\Questeloper.Tests.Unit\Questeloper.Tests.Unit.csproj", "{DF3A3414-F125-4A90-9FD9-67F95C3E2868}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1DF6C2E-9D37-47CB-B819-0DBA5B3C75E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1DF6C2E-9D37-47CB-B819-0DBA5B3C75E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1DF6C2E-9D37-47CB-B819-0DBA5B3C75E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1DF6C2E-9D37-47CB-B819-0DBA5B3C75E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{856C6695-A81D-484F-8838-2D83A61FA9FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{856C6695-A81D-484F-8838-2D83A61FA9FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{856C6695-A81D-484F-8838-2D83A61FA9FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{856C6695-A81D-484F-8838-2D83A61FA9FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A0EB250-4F04-4746-A4A3-458704D7614C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A0EB250-4F04-4746-A4A3-458704D7614C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A0EB250-4F04-4746-A4A3-458704D7614C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A0EB250-4F04-4746-A4A3-458704D7614C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAF9A2C3-1F89-47F2-B710-27FA24362F8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAF9A2C3-1F89-47F2-B710-27FA24362F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAF9A2C3-1F89-47F2-B710-27FA24362F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAF9A2C3-1F89-47F2-B710-27FA24362F8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CBC041C-39FF-426C-A3A7-592C243EA1DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CBC041C-39FF-426C-A3A7-592C243EA1DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CBC041C-39FF-426C-A3A7-592C243EA1DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CBC041C-39FF-426C-A3A7-592C243EA1DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF3A3414-F125-4A90-9FD9-67F95C3E2868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF3A3414-F125-4A90-9FD9-67F95C3E2868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF3A3414-F125-4A90-9FD9-67F95C3E2868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF3A3414-F125-4A90-9FD9-67F95C3E2868}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B1DF6C2E-9D37-47CB-B819-0DBA5B3C75E3} = {BBBD8043-7F40-4169-9D80-A6C5CD7C25CD}
+		{856C6695-A81D-484F-8838-2D83A61FA9FC} = {BBBD8043-7F40-4169-9D80-A6C5CD7C25CD}
+		{2A0EB250-4F04-4746-A4A3-458704D7614C} = {BBBD8043-7F40-4169-9D80-A6C5CD7C25CD}
+		{BAF9A2C3-1F89-47F2-B710-27FA24362F8D} = {BBBD8043-7F40-4169-9D80-A6C5CD7C25CD}
+		{0CBC041C-39FF-426C-A3A7-592C243EA1DA} = {B383B924-C72A-47E5-BBCC-FE0F47CAAD14}
+		{DF3A3414-F125-4A90-9FD9-67F95C3E2868} = {B383B924-C72A-47E5-BBCC-FE0F47CAAD14}
+	EndGlobalSection
+EndGlobal
