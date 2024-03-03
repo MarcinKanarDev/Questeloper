@@ -12,4 +12,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Questeloper.Application\Questeloper.Application.csproj" />
+    <ProjectReference Include="..\Questeloper.Infrastructure\Questeloper.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
