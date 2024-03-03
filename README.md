@@ -2,6 +2,13 @@
 
 Welcome to Questeloper Web Application repository, I'm glad you visited. This repository was created as part of the **100 commits** initiative, if you want to see the projects of others, see link  -https://100commitow.pl/repozytoria
 
+<p align="center">
+  <a >
+    <img src="./assets/logo.png"
+         alt="Screenshot">
+  </a>
+</p>
+
 # About project
 
 Questeloper is an application that aims to facilitate the preparation for an interview (mainly technical) for IT professionals. As a user, you will be faced with questions that will involve defeating a virtual opponent which will be specific programming and technical areas. Authorization, architecture, data structures are the opponents you will have to face. Create your own hero, gain experience and acquire new skills to help you overcome challenges. In the first release of the application, you will have the opportunity: 
