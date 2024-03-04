@@ -70,11 +70,38 @@ The third stage in the first instance assumes a time buffer for the delivery of 
 **Others**
 - Docker
 
-# Application Overwiev
-//todo
+# Application Overview
+Below are some snapshots of basic architecture information and separate notes on data settings and user operations in the application. This will help you look and imagine how the application is supposed to work in its basic version
+A basic overview of the architecture and data flow of the application::
+
+<p align="center">
+  <a >
+    <img src="./assets/app_overview.jpg"
+         alt="Screenshot">
+  </a>
+</p>
+
+Overview of the user flow in the application from the stage of creating the hero to the moement of the clash with the enemy:
+
+<p align="center">
+  <a >
+    <img src="./assets/stage_one_flow.png"
+         alt="Screenshot">
+  </a>
+</p>
+
+Here is a brief overview of the user flow in the application from the opponent's meeting stage to the clash summary
+
+<p align="center">
+  <a >
+    <img src="./assets/stage_two_flow.png"
+         alt="Screenshot">
+  </a>
+</p>
+
+> **Note** At this stage, the above information is intended to help you look at the main concept of the application. As the application develops and new additions are made, the section will be supplemented with additional information and screenshots showing the appearance of the UI
 
 # Build and run project
-//todo
+Information about the build and launch project will be provided soon when the basic structure and components of the application are ready for basic operation
 
 # Information for contributors
-//todo
