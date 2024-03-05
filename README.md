@@ -151,5 +151,5 @@ git push origin feature/this-is-example-feature
 5. Create a pull request on GitHub
 
 # Contact
-Email: marcinkanardev@gmail.com
+Email: marcinkanardev@gmail.com </br>
 Discord Username: abachaczi
