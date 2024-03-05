@@ -109,6 +109,7 @@ There is a possibility for you to contribute and become a part of this project. 
 > **Note** Feel free to submit any suggestions or proposals by creating an issue on GitHub.
 
 **Branch strategy**
+
 For managing branches I choose GitHub Flow to simplify developement workflow.
 
 > **Note** On this project core branch is 'main'. If you start working on some issue please use these templates for branch names: <br> **feature/this-is-example-feature** or **defect/this-is-example-defect**
@@ -121,6 +122,7 @@ For managing branches I choose GitHub Flow to simplify developement workflow.
 </p>
 
 **Quick start**
+
 If you're new, I have prepared a quick start guide for you:
 
 1. Clone repository via SSH
