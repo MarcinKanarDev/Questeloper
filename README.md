@@ -1,6 +1,6 @@
 # Questeloper
 
-Welcome to Questeloper Web Application repository, I'm glad you visited. This repository was created as part of the **100 commits** initiative, if you want to see the projects of others, see link  -https://100commitow.pl/repozytoria
+Welcome to Questeloper Web Application repository, I'm glad you visited. This repository was created as part of the **100 commits** initiative, if you want to see the projects of others, see link - https://100commitow.pl/repozytoria
 
 <p align="center">
   <a >
@@ -41,12 +41,11 @@ The second stage involves providing the client part of the application
 > **Note** Probably the most challenging part due to low experience inTypeScript and Angular
 
 **Third month delivery - technical details and buffer**
-The third stage in the first instance assumes a time buffer for the delivery of requirements before the official end of the initiative. If the core business assumptions can be delivered on time, the remaining time will be used for technical details and implementation of additional technologies
+The third stage in the first instance assumes a time buffer for the delivery of requirements before the official end of the initiative. If the core business assumptions can be delivered on time, the remaining time will be used for technical details and implementation of additional technologies:
 - Containerization of applications using docker
 - Advanced application log management with Elasticsearch and kibana deployment
 - Trying and learning how to deploy an application to a cloud system
 - Preparing a plan and learning how to implement CI/CD (Github Actions)
-
 
 # Technology stack
 
@@ -71,7 +70,7 @@ The third stage in the first instance assumes a time buffer for the delivery of 
 - Docker
 
 # Application Overview
-Below are some snapshots of basic architecture information and separate notes on data settings and user operations in the application. This will help you look and imagine how the application is supposed to work in its basic version
+Below are some screenshots of basic architecture information and separate notes on data settings and user operations in the application. This will help you look and imagine how the application is supposed to work in its basic version
 A basic overview of the architecture and data flow of the application::
 
 <p align="center">
@@ -105,3 +104,50 @@ Here is a brief overview of the user flow in the application from the opponent's
 Information about the build and launch project will be provided soon when the basic structure and components of the application are ready for basic operation
 
 # Information for contributors
+There is a possibility for you to contribute and become a part of this project. First, please take a look at the list of issues to find something that you can work on. If there are no issues that match your skillset, please feel free to contact me via email or on my Discord profile (see contact section). I will review your request and try to find something for you to work on based on our current workload.
+
+> **Note** Feel free to submit any suggestions or proposals by creating an issue on GitHub.
+
+**Branch strategy**
+For managing branches I choose GitHub Flow to simplify developement workflow.
+
+> **Note** On this project core branch is 'main'. If you start working on some issue please use these templates for branch names: <br> **feature/this-is-example-feature** or **defect/this-is-example-defect**
+
+<p align="center">
+  <a >
+    <img src="./assets/GitFlow.png"
+         alt="Screenshot">
+  </a>
+</p>
+
+**Quick start**
+If you're new, I have prepared a quick start guide for you:
+
+1. Clone repository via SSH
+```sh
+git clone git@github.com:MarcinKanarDev/Questeloper.git
+```
+or via HTTPS
+```sh
+git clone https://github.com/MarcinKanarDev/Questeloper.git
+```
+2. Create properly branch
+
+```sh
+git checkout -b feature/this-is-example-feature
+```
+3. Write your code and create a commits
+
+```sh
+git commit -am "Example commit"
+```
+4. Push your branch to repository
+
+```sh
+git push origin feature/this-is-example-feature
+```
+5. Create a pull request on GitHub
+
+# Contact
+Email: marcinkanardev@gmail.com
+Discord Username: abachaczi
