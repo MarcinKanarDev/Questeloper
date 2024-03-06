@@ -1,6 +1,6 @@
 ﻿namespace Questeloper.Domain.Entities;
 
-public class MultipleChoiceQuestion
+public class MultipleChoiceQuestion : Question
 {
     public string OptionA { get; set; }
     public string OptionB { get; set; }
