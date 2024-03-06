@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Questeloper.Domain.Entities;
+using Questeloper.Domain.ValueObjects;
 
 namespace Questeloper.Infrastructure.Persistence.EntityConfigurations;
 
@@ -12,6 +13,8 @@ public class QuestionConfiguration : IEntityTypeConfiguration<Question>
 
         builder
             .Property(q => q.Content)
+            .HasConversion(q => q.Content,
+                q => new QuestionContent(q))
             .IsRequired();
 
         builder

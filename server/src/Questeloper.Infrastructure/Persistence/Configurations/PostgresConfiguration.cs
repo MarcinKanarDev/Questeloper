@@ -1,6 +1,6 @@
 ﻿namespace Questeloper.Infrastructure.Persistence.Configurations;
 
-public class PostgresConfiguration
+internal sealed class PostgresConfiguration
 {
     public const string SectionName = nameof(PostgresConfiguration);
     
