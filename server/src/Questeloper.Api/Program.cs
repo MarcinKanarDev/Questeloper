@@ -1,3 +1,4 @@
+using Questeloper.Application;
 using Questeloper.Infrastructure;
 using Serilog;
 
@@ -12,6 +13,7 @@ try
     var builder = WebApplication.CreateBuilder(args);
     
     builder.Services.AddInfrastructure(builder.Configuration);
+    builder.Services.AddApplication();
     
     builder.Host.UseSerilog((context, configuration) =>
     {
@@ -31,8 +33,4 @@ catch(Exception ex)
 finally
 {
     Log.CloseAndFlushAsync();
-}
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }

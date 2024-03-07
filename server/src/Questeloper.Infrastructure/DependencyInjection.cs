@@ -3,7 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using Questeloper.Domain.Repositories;
+using Questeloper.Infrastructure.Middlewares;
 using Questeloper.Infrastructure.Persistence;
 using Questeloper.Infrastructure.Persistence.Configurations;
 using Questeloper.Infrastructure.Persistence.DatabaseSeeders;
@@ -22,10 +24,19 @@ public static class DependencyInjection
             o.UseNpgsql(options.ConnectionString));
         
         services.AddEndpointsApiExplorer();
-        services.AddSwaggerGen();
+        services.AddSwaggerGen(swagger =>
+        {
+            swagger.EnableAnnotations();
+            swagger.SwaggerDoc("v1", new OpenApiInfo
+            {
+                Title = "Questeloper",
+                Version = "v1"
+            });
+        });
         
         services.AddHostedService<DatabaseInitializer>();
-
+    
+        services.AddSingleton<ExceptionHandlingMiddleware>();
         services.AddScoped<IHeroRepository, HeroRepository>();
         
         services.AddEndpointsApiExplorer();
