@@ -3,9 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Questeloper.Domain.Repositories;
 using Questeloper.Infrastructure.Persistence;
 using Questeloper.Infrastructure.Persistence.Configurations;
 using Questeloper.Infrastructure.Persistence.DatabaseSeeders;
+using Questeloper.Infrastructure.Persistence.Repositories;
 
 namespace Questeloper.Infrastructure;
 
@@ -24,6 +26,8 @@ public static class DependencyInjection
         
         services.AddHostedService<DatabaseInitializer>();
 
+        services.AddScoped<IHeroRepository, HeroRepository>();
+        
         services.AddEndpointsApiExplorer();
         
         return services;
