@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
+    <UserSecretsId>28bb458c-d1e3-47da-b5f5-ca68889f7b64</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Carter" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
