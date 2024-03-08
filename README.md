@@ -65,13 +65,14 @@ The third stage in the first instance assumes a time buffer for the delivery of 
 - HTML and CSS
 - Angular 17
 - NodeJS
+- Tailwind
 
 **Others**
 - Docker
 
 # Application Overview
 Below are some screenshots of basic architecture information and separate notes on data settings and user operations in the application. This will help you look and imagine how the application is supposed to work in its basic version
-A basic overview of the architecture and data flow of the application::
+A basic overview of the architecture and data flow of the application:
 
 <p align="center">
   <a >
