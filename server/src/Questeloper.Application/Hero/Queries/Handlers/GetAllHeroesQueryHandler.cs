@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Questeloper.Domain.Repositories;
 
 namespace Questeloper.Application.Hero.Queries.Handlers;
 
@@ -7,8 +8,8 @@ internal sealed class GetAllHeroesQueryHandler(IHeroRepository heroRepository) :
 
     public async Task<IEnumerable<GetHeroResponse>> Handle(GetAllHeroesQuery request, CancellationToken cancellationToken)
     {
-        var result = await heroRepository.GetAllHeroesAsync();
+        var result = await heroRepository.GetHeroesAsync();
 
-        return result;
+        return null;
     }
 }
