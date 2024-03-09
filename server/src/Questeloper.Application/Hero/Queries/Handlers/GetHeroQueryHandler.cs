@@ -1,20 +1,17 @@
 ﻿using MediatR;
+using Questeloper.Domain.Exceptions;
+using Questeloper.Domain.Repositories;
 
 namespace Questeloper.Application.Hero.Queries.Handlers;
 
 internal sealed class GetHeroQueryHandler : IRequestHandler<GetHeroQuery, GetHeroResponse>
 {
-    private readonly IHeroRepository _heroRepository;
-
-    public GetHeroQueryHandler(IHeroRepository heroRepository)
-    {
-        _heroRepository = heroRepository;
-    }
-
     public async Task<GetHeroResponse> Handle(GetHeroQuery request, CancellationToken cancellationToken)
     {
-        var result = await _heroRepository.GetHero(request.HeroId);
+        var hero = 
+            await heroRepository.GetByIdAsync(request.HeroId)
+            ?? throw new HeroNotFoundException(request.HeroId);
 
-        return result;
+        return hero.ToResponse();
     }
 }

@@ -4,11 +4,10 @@ namespace Questeloper.Application.Hero.Queries.Handlers;
 
 internal sealed class GetAllHeroesQueryHandler(IHeroRepository heroRepository) : IRequestHandler<GetAllHeroesQuery, IEnumerable<GetHeroResponse>>
 {
-
     public async Task<IEnumerable<GetHeroResponse>> Handle(GetAllHeroesQuery request, CancellationToken cancellationToken)
     {
-        var result = await heroRepository.GetAllHeroesAsync();
+        var heroes = await heroRepository.GetHeroesAsync();
 
-        return result;
+        return heroes.Select(x => x.ToResponse());
     }
 }

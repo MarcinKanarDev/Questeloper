@@ -26,4 +26,9 @@ public class Hero : EntityBase
         HealthPoints = 100;
         ManaPoints = 100;
     }
+
+    public void ChangeHeroName(string newName)
+    {
+        HeroName = new HeroName(newName);
+    }
 }
