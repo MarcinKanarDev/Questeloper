@@ -1,10 +1,11 @@
 ﻿using MediatR;
+using Questeloper.Application.Abstractions;
 using Questeloper.Domain.Exceptions;
 using Questeloper.Domain.Repositories;
 
 namespace Questeloper.Application.Hero.Commands.UpdateHeroCommand;
 
-internal sealed class UpdateHeroCommandHandler(IHeroRepository heroRepository) : IRequestHandler<UpdateHeroCommand>
+internal sealed class UpdateHeroCommandHandler(IHeroRepository heroRepository) : ICommandHandler<UpdateHeroCommand>
 {
     public async Task Handle(UpdateHeroCommand request, CancellationToken cancellationToken)
     {

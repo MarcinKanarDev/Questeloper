@@ -1,10 +1,11 @@
 ﻿using MediatR;
+using Questeloper.Application.Abstractions;
 using Questeloper.Domain.Exceptions;
 using Questeloper.Domain.Repositories;
 
 namespace Questeloper.Application.Hero.Queries.Handlers;
 
-internal sealed class GetHeroQueryHandler(IHeroRepository heroRepository) : IRequestHandler<GetHeroQuery, GetHeroResponse>
+internal sealed class GetHeroQueryHandler(IHeroRepository heroRepository) : IQueryHandler<GetHeroQuery, GetHeroResponse>
 {
     public async Task<GetHeroResponse> Handle(GetHeroQuery request, CancellationToken cancellationToken)
     {

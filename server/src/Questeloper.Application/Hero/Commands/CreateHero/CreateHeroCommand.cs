@@ -1,5 +1,5 @@
-﻿using MediatR;
+﻿using Questeloper.Application.Abstractions;
 
 namespace Questeloper.Application.Hero.Commands.CreateHero;
 
-public sealed record CreateHeroCommand(string Name, string HeroClass) : IRequest<int>;
+public sealed record CreateHeroCommand(string Name, string HeroClass) : ICommand<int>;

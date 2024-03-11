@@ -1,11 +1,12 @@
 ﻿using MediatR;
+using Questeloper.Application.Abstractions;
 using Questeloper.Application.Hero.Queries;
 using Questeloper.Domain.Exceptions;
 using Questeloper.Domain.Repositories;
 
 namespace Questeloper.Application.Hero.Commands.DeleteHero;
 
-internal sealed class DeleteHeroCommandHandler(IHeroRepository heroRepository) : IRequestHandler<DeleteHeroCommand>
+internal sealed class DeleteHeroCommandHandler(IHeroRepository heroRepository) : ICommandHandler<DeleteHeroCommand>
 {
     public async Task Handle(DeleteHeroCommand request, CancellationToken cancellationToken)
     {

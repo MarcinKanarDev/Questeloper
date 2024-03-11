@@ -11,7 +11,6 @@ namespace Questeloper.Api.Endpoints;
 
 public class HeroEndpoints(ISender sender) : ApiEndpointBase(sender), ICarterModule
 {
-    private readonly ISender _sender = sender;
     protected override string EndpointRoute => "/api/heroes";
     
     public void AddRoutes(IEndpointRouteBuilder app)
@@ -52,21 +51,21 @@ public class HeroEndpoints(ISender sender) : ApiEndpointBase(sender), ICarterMod
     
     private async Task<IResult> DeleteHero([FromBody] DeleteHeroCommand command)
     {
-        await _sender.Send(command);
+        await sender.Send(command);
 
         return Results.NoContent();
     }
 
     private async Task<IResult> UpdateHero([FromBody] UpdateHeroCommand command)
     {
-        await _sender.Send(command);
+        await sender.Send(command);
 
         return Results.NoContent();
     }
 
     private async Task<IResult> CreateHero([FromBody] CreateHeroCommand command)
     {
-        var result = await _sender.Send(command);
+        var result = await sender.Send(command);
         
         return Results.Created(nameof(GetHeroById), new { id = result.ToString()});
     }
@@ -74,7 +73,7 @@ public class HeroEndpoints(ISender sender) : ApiEndpointBase(sender), ICarterMod
     private async Task<IResult> GetHeroById([FromRoute] int id)
     {
         var query = new GetHeroQuery(id);
-        var result = await _sender.Send(query);
+        var result = await sender.Send(query);
 
         return Results.Ok(result);
     }
@@ -82,7 +81,7 @@ public class HeroEndpoints(ISender sender) : ApiEndpointBase(sender), ICarterMod
     private async Task<IResult> GetHeroes()
     {
         var query = new GetAllHeroesQuery();
-        var result = await _sender.Send(query);
+        var result = await sender.Send(query);
         
         return Results.Ok(result);
     }

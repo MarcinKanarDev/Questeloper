@@ -5,15 +5,8 @@ using Questeloper.Domain.Exceptions;
 
 namespace Questeloper.Infrastructure.Middlewares;
 
-internal sealed class ExceptionHandlingMiddleware : IMiddleware
+internal sealed class ExceptionHandlingMiddleware(ILogger<ExceptionHandlingMiddleware> logger) : IMiddleware
 {
-    private readonly ILogger<ExceptionHandlingMiddleware> _logger;
-
-    public ExceptionHandlingMiddleware(ILogger<ExceptionHandlingMiddleware> logger)
-    {
-        _logger = logger;
-    }
-    
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
         try
@@ -22,7 +15,7 @@ internal sealed class ExceptionHandlingMiddleware : IMiddleware
         }
         catch (Exception exception)
         {
-            _logger.LogError(exception.Message);
+            logger.LogError(exception.Message);
             
             await HandleExceptionAsync(exception, context);
         }

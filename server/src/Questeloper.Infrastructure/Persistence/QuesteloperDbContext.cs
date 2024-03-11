@@ -3,7 +3,7 @@ using Questeloper.Domain.Entities;
 
 namespace Questeloper.Infrastructure.Persistence;
 
-internal class QuesteloperDbContext : DbContext
+public class QuesteloperDbContext : DbContext
 {
     public QuesteloperDbContext(DbContextOptions<QuesteloperDbContext> options)
         : base(options)

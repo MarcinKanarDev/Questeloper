@@ -23,6 +23,12 @@ public static class DependencyInjection
         services.AddDbContext<QuesteloperDbContext>(o =>
             o.UseNpgsql(options.ConnectionString));
         
+        services.AddScoped<IHeroRepository, HeroRepository>();
+        
+        services.AddHostedService<DatabaseInitializer>();
+    
+        services.AddTransient<ExceptionHandlingMiddleware>();
+        
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen(swagger =>
         {
@@ -33,13 +39,6 @@ public static class DependencyInjection
                 Version = "v1"
             });
         });
-        
-        services.AddHostedService<DatabaseInitializer>();
-    
-        services.AddSingleton<ExceptionHandlingMiddleware>();
-        services.AddScoped<IHeroRepository, HeroRepository>();
-        
-        services.AddEndpointsApiExplorer();
         
         return services;
     }
