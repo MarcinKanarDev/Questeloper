@@ -1,3 +1,4 @@
+using Carter;
 using Questeloper.Application;
 using Questeloper.Infrastructure;
 using Serilog;
@@ -14,6 +15,7 @@ try
     
     builder.Services.AddInfrastructure(builder.Configuration);
     builder.Services.AddApplication();
+    builder.Services.AddCarter();
     
     builder.Host.UseSerilog((context, configuration) =>
     {
@@ -23,6 +25,7 @@ try
     var app = builder.Build();
 
     app.UseInfrastructure();
+    app.MapCarter();
     
     app.Run();
 }

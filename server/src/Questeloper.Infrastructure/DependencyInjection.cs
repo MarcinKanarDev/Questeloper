@@ -52,6 +52,7 @@ public static class DependencyInjection
             app.UseSwaggerUI();
         }
 
+        app.UseMiddleware<ExceptionHandlingMiddleware>();
         app.UseHttpsRedirection();
         
         return app;
