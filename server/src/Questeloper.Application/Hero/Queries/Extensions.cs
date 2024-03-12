@@ -5,8 +5,8 @@ internal static class Extensions
     public static GetHeroResponse ToResponse(this Domain.Entities.Hero hero) => 
         new GetHeroResponse(
             hero.HeroName.Name,
-            hero.Level,
+            hero.Level.LevelValue,
             hero.HeroClass.Name,
-            hero.Experience,
-            hero.HealthPoints); 
+            hero.Experience.ExperiencePoints,
+            hero.HealthPoints.Points); 
 }

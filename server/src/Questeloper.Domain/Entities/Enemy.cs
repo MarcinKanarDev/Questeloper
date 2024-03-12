@@ -6,8 +6,8 @@ public class Enemy
 {
     public int Id { get; set; }
     public EnemyName Name { get; set; }
-    public int HealthPoints { get; set; }
-    public int Level { get; set; }
+    public HealthPoints HealthPoints { get; set; }
+    public Level Level { get; set; }
 
     public ICollection<Question> Questions { get; set; }
     public ICollection<Battle> Battles { get; set; }
@@ -19,7 +19,7 @@ public class Enemy
     public Enemy(string name)
     {
         Name = new EnemyName(name);
-        HealthPoints = 100;
-        Level = 0;
+        HealthPoints = new HealthPoints(100);
+        Level = new Level(1);
     }
 }
