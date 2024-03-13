@@ -1,4 +1,5 @@
 using Carter;
+using Questeloper.Api.Endpoints;
 using Questeloper.Application;
 using Questeloper.Infrastructure;
 using Serilog;
@@ -13,9 +14,7 @@ try
 
     var builder = WebApplication.CreateBuilder(args);
     
-    builder.Services.AddInfrastructure(builder.Configuration);
-    builder.Services.AddApplication();
-    builder.Services.AddCarter();
+    builder.Services.AddInfrastructure(builder.Configuration).AddApplication();
     
     builder.Host.UseSerilog((context, configuration) =>
     {
@@ -25,13 +24,15 @@ try
     var app = builder.Build();
 
     app.UseInfrastructure();
-    app.MapCarter();
+
+    app.AddRoutes();
     
     app.Run();
 }
 catch(Exception ex)
 {
     Log.Fatal(ex, "Application terminated unexpectedly");
+    Console.ReadKey();
 }
 finally
 {

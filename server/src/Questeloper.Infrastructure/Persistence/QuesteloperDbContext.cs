@@ -3,13 +3,8 @@ using Questeloper.Domain.Entities;
 
 namespace Questeloper.Infrastructure.Persistence;
 
-public class QuesteloperDbContext : DbContext
+internal class QuesteloperDbContext(DbContextOptions<QuesteloperDbContext> options) : DbContext(options)
 {
-    public QuesteloperDbContext(DbContextOptions<QuesteloperDbContext> options)
-        : base(options)
-    {
-    }
-
     public DbSet<Hero> Heroes { get; set; }
     public DbSet<Category> Categories { get; set; }
     public DbSet<Enemy> Enemies { get; set; }

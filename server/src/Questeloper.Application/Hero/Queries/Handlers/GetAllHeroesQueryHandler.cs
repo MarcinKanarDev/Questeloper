@@ -4,7 +4,7 @@ using Questeloper.Domain.Repositories;
 
 namespace Questeloper.Application.Hero.Queries.Handlers;
 
-public sealed class GetAllHeroesQueryHandler(IHeroRepository heroRepository)
+internal sealed class GetAllHeroesQueryHandler(IHeroRepository heroRepository)
     : IQueryHandler<GetAllHeroesQuery, IEnumerable<GetHeroResponse>>
 {
     public async Task<IEnumerable<GetHeroResponse>> Handle(GetAllHeroesQuery request, CancellationToken cancellationToken)

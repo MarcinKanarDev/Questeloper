@@ -20,10 +20,14 @@ public class EnemyConfiguration : IEntityTypeConfiguration<Enemy>
 
         builder
             .Property(e => e.HealthPoints)
+            .HasConversion(e => e.Points,
+                e => new HealthPoints(e))
             .IsRequired();
 
         builder
             .Property(e => e.Level)
+            .HasConversion(e => e.LevelValue,
+                e => new Level(e))
             .HasMaxLength(100)
             .IsRequired();
 

@@ -18,7 +18,14 @@ public class HeroConfiguration : IEntityTypeConfiguration<Hero>
             .HasMaxLength(200);
 
         builder
+            .Property(h => h.Experience)
+            .HasConversion(h => h.ExperiencePoints,
+                h => new Experience(h));
+
+        builder
             .Property(h => h.Level)
+            .HasConversion(e => e.LevelValue,
+                e => new Level(e))
             .HasMaxLength(100);
 
         builder
@@ -29,10 +36,14 @@ public class HeroConfiguration : IEntityTypeConfiguration<Hero>
 
         builder
             .Property(h => h.HealthPoints)
+            .HasConversion(h => h.Points,
+                h => new HealthPoints(h))
             .IsRequired();
 
         builder
             .Property(h => h.ManaPoints)
+            .HasConversion(h => h.ManaValue,
+                h => new ManaPoints(h))
             .IsRequired();
     }
 }

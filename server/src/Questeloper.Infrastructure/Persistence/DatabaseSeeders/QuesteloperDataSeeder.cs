@@ -22,6 +22,9 @@ internal sealed class QuesteloperDataSeeder(QuesteloperDbContext questeloperDbCo
         var heroesFaker = new Faker<Hero>()
             .RuleFor(x => x.Level, x => new Level(x.Random.Int(1, 100)))
             .RuleFor(x => x.HeroName, x => new HeroName(x.Person.UserName))
+            .RuleFor(x => x.Experience, x => new Experience(x.Random.Int(1, 10000)))
+            .RuleFor(x => x.HealthPoints, x => new HealthPoints(x.Random.Int(1, 100)))
+            .RuleFor(x => x.ManaPoints, x => new ManaPoints(x.Random.Int(1, 100)))
             .RuleFor(x => x.HeroClass, x => 
                 new HeroClass(x.PickRandom(heroesClasses)));
 
@@ -77,6 +80,7 @@ internal sealed class QuesteloperDataSeeder(QuesteloperDbContext questeloperDbCo
     {
         var enemiesFaker = new Faker<Enemy>()
             .RuleFor(x => x.Name, x => new EnemyName(x.Lorem.Word()))
+            .RuleFor(x => x.HealthPoints, x => new HealthPoints(x.Random.Int(1, 100)))
             .RuleFor(x => x.Level, x => new Level(x.Random.Int(1, 100)));
 
         var enemiesToSeed = enemiesFaker.Generate(10);

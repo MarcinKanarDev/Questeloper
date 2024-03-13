@@ -23,11 +23,10 @@ public static class DependencyInjection
         services.AddDbContext<QuesteloperDbContext>(o =>
             o.UseNpgsql(options.ConnectionString));
         
-        services.AddScoped<IHeroRepository, HeroRepository>();
-        
         services.AddHostedService<DatabaseInitializer>();
-    
-        services.AddTransient<ExceptionHandlingMiddleware>();
+        
+        services.AddScoped<ExceptionHandlingMiddleware>();
+        services.AddScoped<IHeroRepository, HeroRepository>();
         
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen(swagger =>
