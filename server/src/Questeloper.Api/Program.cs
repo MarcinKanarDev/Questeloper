@@ -1,4 +1,3 @@
-using Carter;
 using Questeloper.Api.Endpoints;
 using Questeloper.Application;
 using Questeloper.Infrastructure;
@@ -25,7 +24,8 @@ try
 
     app.UseInfrastructure();
 
-    app.AddRoutes();
+    app.MapHeroEndpoints();
+    app.MapEnemiesEndpoints();
     
     app.Run();
 }

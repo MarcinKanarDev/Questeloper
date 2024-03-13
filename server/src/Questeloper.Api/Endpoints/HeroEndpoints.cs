@@ -11,7 +11,7 @@ public static class HeroEndpoints
 {
     private static string EndpointRoute => "/api/heroes";
     
-    public static IEndpointRouteBuilder AddRoutes(this IEndpointRouteBuilder app)
+    public static IEndpointRouteBuilder MapHeroEndpoints(this IEndpointRouteBuilder app)
     {
         var heroes = app.MapGroup(EndpointRoute)
             .WithTags("heroes");
