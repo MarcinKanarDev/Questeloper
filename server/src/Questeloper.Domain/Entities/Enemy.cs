@@ -2,9 +2,8 @@
 
 namespace Questeloper.Domain.Entities;
 
-public class Enemy
+public class Enemy : EntityBase
 {
-    public int Id { get; set; }
     public EnemyName Name { get; set; }
     public HealthPoints HealthPoints { get; set; }
     public Level Level { get; set; }

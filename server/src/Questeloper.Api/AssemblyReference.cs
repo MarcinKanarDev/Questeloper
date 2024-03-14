@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Questeloper.Infrastructure;
+namespace Questeloper.Api;
 
 public static class AssemblyReference
 {
