@@ -1,5 +1,4 @@
-﻿using MediatR;
-using Questeloper.Application.Abstractions;
+﻿using Questeloper.Application.Abstractions;
 using Questeloper.Domain.Repositories;
 
 namespace Questeloper.Application.Hero.Queries.Handlers;

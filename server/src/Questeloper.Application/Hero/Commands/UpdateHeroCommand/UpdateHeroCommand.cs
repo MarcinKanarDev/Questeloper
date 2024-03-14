@@ -1,5 +1,4 @@
-﻿using MediatR;
-using Questeloper.Application.Abstractions;
+﻿using Questeloper.Application.Abstractions;
 
 namespace Questeloper.Application.Hero.Commands.UpdateHeroCommand;
 

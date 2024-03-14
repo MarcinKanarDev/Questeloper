@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Questeloper.Application.Enemy.Queries;
-using Questeloper.Application.Hero.Queries;
 
 namespace Questeloper.Api.Endpoints;
 

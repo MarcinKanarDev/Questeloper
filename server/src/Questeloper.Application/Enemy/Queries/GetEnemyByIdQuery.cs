@@ -2,4 +2,4 @@
 
 namespace Questeloper.Application.Enemy.Queries;
 
-public record GetEnemyByIdQuery(int Id) : IQuery<GetEnemyResponse>;
+public sealed record GetEnemyByIdQuery(int Id) : IQuery<GetEnemyResponse>;
