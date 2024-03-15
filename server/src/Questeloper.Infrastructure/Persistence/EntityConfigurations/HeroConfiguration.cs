@@ -42,7 +42,7 @@ public class HeroConfiguration : IEntityTypeConfiguration<Hero>
 
         builder
             .Property(h => h.ManaPoints)
-            .HasConversion(h => h.ManaValue,
+            .HasConversion(h => h.Points,
                 h => new ManaPoints(h))
             .IsRequired();
     }

@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using Questeloper.Application.Behaviours;
 
 namespace Questeloper.Application;
 
@@ -8,6 +11,11 @@ public static class DependencyInjection
     {
         services.AddMediatR(cfg =>
             cfg.RegisterServicesFromAssemblies(AssemblyReference.Assembly));
+        
+        services
+            .AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehaviour<,>));
+
+        services.AddValidatorsFromAssembly(AssemblyReference.Assembly, includeInternalTypes: true);
         
         return services;
     }

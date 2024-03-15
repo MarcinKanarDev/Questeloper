@@ -5,4 +5,5 @@ public sealed record GetHeroResponse(
     int Level,
     string HeroClass,
     int Experience,
-    int HealthPoints);
+    int HealthPoints,
+    int ManaPoints);

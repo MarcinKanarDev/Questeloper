@@ -1,3 +1,3 @@
 ﻿namespace Questeloper.Domain.ValueObjects;
 
-public record ManaPoints(int ManaValue);
+public record ManaPoints(int Points);

@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Questeloper.Domain.Exceptions;
@@ -25,13 +26,29 @@ internal sealed class ExceptionHandlingMiddleware(ILogger<ExceptionHandlingMiddl
     {
         var apiError = exception switch
         {
-            CustomException customException => new ApiError(customException.StatusCode, customException.Message),
-            _ => new ApiError(HttpStatusCode.InternalServerError, exception.Message)
+            CustomException customException =>
+                new ApiError(customException.StatusCode, customException.Message),
+            ValidationException validationException => 
+                new ApiError(HttpStatusCode.BadRequest, "Request validation error.",
+                    GetErrors(validationException)),
+            _ =>
+                new ApiError(HttpStatusCode.InternalServerError, exception.Message)
         };
 
         context.Response.StatusCode = (int)apiError.StatusCode;
         await context.Response.WriteAsJsonAsync(apiError);
     }
 
-    private record ApiError(HttpStatusCode StatusCode, string Message);
+    private static IDictionary<string, string[]> GetErrors(ValidationException exception)
+    {
+        return exception.Errors
+            .GroupBy(x => x.PropertyName)
+            .ToDictionary(x => x.Key, x =>
+                x.Select(y => y.ErrorMessage).ToArray());
+    }
+
+    private sealed record ApiError(
+        HttpStatusCode StatusCode,
+        string? Message = default,
+        IDictionary<string, string[]>? Errors = default);
 }

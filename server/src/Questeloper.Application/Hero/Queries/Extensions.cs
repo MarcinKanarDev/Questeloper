@@ -8,5 +8,6 @@ internal static class Extensions
             hero.Level.LevelValue,
             hero.HeroClass.Name,
             hero.Experience.ExperiencePoints,
-            hero.HealthPoints.Points); 
+            hero.HealthPoints.Points,
+            hero.ManaPoints.Points); 
 }

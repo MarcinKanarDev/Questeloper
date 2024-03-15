@@ -28,6 +28,7 @@ public static class DependencyInjection
         services.AddScoped<ExceptionHandlingMiddleware>();
         services.AddScoped<IHeroRepository, HeroRepository>();
         services.AddScoped<IEnemyRepository, EnemyRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
         
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen(swagger =>
