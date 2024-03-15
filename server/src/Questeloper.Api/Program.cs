@@ -25,7 +25,8 @@ try
     app.UseInfrastructure();
 
     app.MapHeroEndpoints();
-    app.MapEnemiesEndpoints();
+    app.MapEnemyEndpoints();
+    app.MapCategoryEndpoints();
     
     app.Run();
 }

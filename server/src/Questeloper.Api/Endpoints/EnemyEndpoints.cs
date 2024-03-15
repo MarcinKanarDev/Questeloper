@@ -8,7 +8,7 @@ public static class EnemyEndpoints
 {
     private static string EndpointRoute => "/api/enemies";
 
-    public static IEndpointRouteBuilder MapEnemiesEndpoints(this IEndpointRouteBuilder app)
+    public static IEndpointRouteBuilder MapEnemyEndpoints(this IEndpointRouteBuilder app)
     {
         var enemies = app.MapGroup(EndpointRoute)
             .WithTags("enemies");
@@ -22,6 +22,7 @@ public static class EnemyEndpoints
         enemies.MapGet("/{id:int}", GetEnemyById)
             .Produces(StatusCodes.Status200OK, typeof(GetEnemyResponse))
             .ProducesProblem(StatusCodes.Status400BadRequest)
+            .ProducesProblem(StatusCodes.Status404NotFound)
             .WithName(nameof(GetEnemyById))
             .WithDescription("Get enemy by specific id");
 
