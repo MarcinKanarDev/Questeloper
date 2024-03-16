@@ -13,7 +13,8 @@ public static class DependencyInjection
             cfg.RegisterServicesFromAssemblies(AssemblyReference.Assembly));
         
         services
-            .AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehaviour<,>));
+            .AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehaviour<,>))
+            .AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingPipelineBehaviour<,>));
 
         services.AddValidatorsFromAssembly(AssemblyReference.Assembly, includeInternalTypes: true);
         
