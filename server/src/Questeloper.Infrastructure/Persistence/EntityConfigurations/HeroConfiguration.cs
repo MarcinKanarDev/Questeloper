@@ -13,7 +13,7 @@ public class HeroConfiguration : IEntityTypeConfiguration<Hero>
 
         builder
             .Property(h => h.HeroName)
-            .HasConversion(h => h.Name,
+            .HasConversion(h => h.Value,
                 x => new HeroName(x))
             .HasMaxLength(200);
 

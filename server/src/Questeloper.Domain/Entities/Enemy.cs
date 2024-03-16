@@ -4,12 +4,12 @@ namespace Questeloper.Domain.Entities;
 
 public class Enemy : EntityBase
 {
-    public EnemyName Name { get; set; }
-    public HealthPoints HealthPoints { get; set; }
-    public Level Level { get; set; }
+    public EnemyName Name { get; private set; }
+    public HealthPoints HealthPoints { get; private set; }
+    public Level Level { get; private set; }
 
-    public ICollection<Question> Questions { get; set; }
-    public ICollection<Battle> Battles { get; set; }
+    public ICollection<Question> Questions { get; private set; }
+    public ICollection<Battle> Battles { get; private set; }
 
     public Enemy()
     {

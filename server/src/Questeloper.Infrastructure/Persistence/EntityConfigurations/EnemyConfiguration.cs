@@ -13,7 +13,7 @@ public class EnemyConfiguration : IEntityTypeConfiguration<Enemy>
 
         builder
             .Property(e => e.Name)
-            .HasConversion(e => e.Name,
+            .HasConversion(e => e.Value,
                 e => new EnemyName(e))
             .HasMaxLength(255)
             .IsRequired();

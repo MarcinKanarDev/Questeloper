@@ -3,6 +3,6 @@
 public static class Extensions
 {
     public static GetCategoryResponse ToResponse(this Domain.Entities.Category category) =>
-        new GetCategoryResponse(category.CategoryName.Name);
+        new GetCategoryResponse(category.CategoryName.Value);
 
 }

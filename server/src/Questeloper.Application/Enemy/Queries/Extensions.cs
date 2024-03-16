@@ -4,7 +4,7 @@ public static class Extensions
 {
     public static GetEnemyResponse ToResponse(this Domain.Entities.Enemy enemy) =>
         new GetEnemyResponse(
-            enemy.Name.Name,
+            enemy.Name.Value,
             enemy.HealthPoints.Points,
             enemy.Level.LevelValue);
 

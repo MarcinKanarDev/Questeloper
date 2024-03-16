@@ -13,7 +13,7 @@ public class CategoryConfiguration : IEntityTypeConfiguration<Category>
         
         builder
             .Property(c => c.CategoryName)
-            .HasConversion(e => e.Name,
+            .HasConversion(e => e.Value,
                 e => new CategoryName(e))
             .IsRequired();
     }

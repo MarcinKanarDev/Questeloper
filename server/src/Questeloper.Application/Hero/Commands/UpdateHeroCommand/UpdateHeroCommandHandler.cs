@@ -10,7 +10,7 @@ internal sealed class UpdateHeroCommandHandler(IHeroRepository heroRepository) :
     {
         var heroes = await heroRepository.GetHeroesAsync();
 
-        if (heroes.Any(x => x.HeroName.Name.Equals(request.NewName)))
+        if (heroes.Any(x => x.HeroName.Value.Equals(request.NewName)))
         {
             throw new HeroNameAlreadyExistsException(request.NewName);
         }
