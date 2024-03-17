@@ -12,6 +12,6 @@ internal sealed class CreateHeroCommandValidator : AbstractValidator<CreateHeroC
             .MinimumLength(2).WithMessage("Hero name must be longer than 2 characters.");
 
         RuleFor(x => x.HeroClass)
-            .NotEmpty().WithMessage("Hero class is required)");
+            .NotEmpty().WithMessage("Hero class is required.");
     }
 }

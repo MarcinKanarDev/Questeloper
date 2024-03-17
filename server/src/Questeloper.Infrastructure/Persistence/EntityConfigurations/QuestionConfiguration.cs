@@ -5,7 +5,7 @@ using Questeloper.Domain.ValueObjects;
 
 namespace Questeloper.Infrastructure.Persistence.EntityConfigurations;
 
-public class QuestionConfiguration : IEntityTypeConfiguration<Question>
+internal sealed class QuestionConfiguration : IEntityTypeConfiguration<Question>
 {
     public void Configure(EntityTypeBuilder<Question> builder)
     {

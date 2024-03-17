@@ -5,7 +5,7 @@ using Questeloper.Domain.ValueObjects;
 
 namespace Questeloper.Infrastructure.Persistence.EntityConfigurations;
 
-public class HeroConfiguration : IEntityTypeConfiguration<Hero>
+internal sealed class HeroConfiguration : IEntityTypeConfiguration<Hero>
 {
     public void Configure(EntityTypeBuilder<Hero> builder)
     {

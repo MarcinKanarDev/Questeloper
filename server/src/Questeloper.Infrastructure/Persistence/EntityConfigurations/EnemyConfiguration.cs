@@ -5,7 +5,7 @@ using Questeloper.Domain.ValueObjects;
 
 namespace Questeloper.Infrastructure.Persistence.EntityConfigurations;
 
-public class EnemyConfiguration : IEntityTypeConfiguration<Enemy>
+internal sealed class EnemyConfiguration : IEntityTypeConfiguration<Enemy>
 {
     public void Configure(EntityTypeBuilder<Enemy> builder)
     {

@@ -4,7 +4,7 @@ using Questeloper.Domain.Entities;
 
 namespace Questeloper.Infrastructure.Persistence.EntityConfigurations;
 
-public class BattleConfiguration : IEntityTypeConfiguration<Battle>
+internal sealed class BattleConfiguration : IEntityTypeConfiguration<Battle>
 {
     public void Configure(EntityTypeBuilder<Battle> builder)
     {

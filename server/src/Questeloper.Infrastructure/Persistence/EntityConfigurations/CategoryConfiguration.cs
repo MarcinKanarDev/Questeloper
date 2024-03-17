@@ -5,7 +5,7 @@ using Questeloper.Domain.ValueObjects;
 
 namespace Questeloper.Infrastructure.Persistence.EntityConfigurations;
 
-public class CategoryConfiguration : IEntityTypeConfiguration<Category>
+internal sealed class CategoryConfiguration : IEntityTypeConfiguration<Category>
 {
     public void Configure(EntityTypeBuilder<Category> builder)
     {
