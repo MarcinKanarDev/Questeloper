@@ -6,7 +6,7 @@ internal static class Extensions
         new GetHeroResponse(
             hero.HeroName.Value,
             hero.Level.LevelValue,
-            hero.HeroClass.Name,
+            hero.HeroClass.Value,
             hero.Experience.ExperiencePoints,
             hero.HealthPoints.Points,
             hero.ManaPoints.Points); 

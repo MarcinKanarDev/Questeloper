@@ -36,7 +36,7 @@ public class CreateHeroCommandHandlerTests
         await _heroRepository
             .Received(1)
             .CreateHeroAsync(Arg.Is<Domain.Entities.Hero>(h =>
-                h.HeroName == command.Name && h.HeroClass.Name == command.HeroClass));
+                h.HeroName == command.Name && h.HeroClass.Value == command.HeroClass));
         await _heroRepository.Received(1).CompleteAsync();
         
         result.Should().Be(expectedHeroId);

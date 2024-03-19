@@ -30,7 +30,7 @@ internal sealed class HeroConfiguration : IEntityTypeConfiguration<Hero>
 
         builder
             .Property(h => h.HeroClass)
-            .HasConversion(h => h.Name,
+            .HasConversion(h => h.Value,
                 h => new HeroClass(h))
             .IsRequired();
 
