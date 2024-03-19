@@ -9,6 +9,7 @@ internal class QuesteloperDbContext(DbContextOptions<QuesteloperDbContext> optio
     public DbSet<Category> Categories { get; set; }
     public DbSet<Enemy> Enemies { get; set; }
     public DbSet<Battle> Battles { get; set; }
+    public DbSet<User> Users { get; set; }
     public DbSet<Question> Questions { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -4,18 +4,21 @@ namespace Questeloper.Domain.ValueObjects;
 
 public sealed record CategoryName
 {
+    private const int MinLength = 3;
+    private const int MaxLength = 250;
+    
     public string Value { get; }
 
     public CategoryName(string value)
     {
         if (string.IsNullOrWhiteSpace(value))
         {
-            throw new CategoryNameIsEmptyException();
+            throw new ValueIsEmptyException(nameof(CategoryName));
         }
 
-        if (value.Length is > 250 or < 3)
+        if (value.Length is < MinLength or > MaxLength)
         {
-            throw new CategoryNameIncorrectLengthException(value);
+            throw new ValueIncorrectLengthException(nameof(CategoryName), MinLength, MaxLength);
         }
 
         Value = value;

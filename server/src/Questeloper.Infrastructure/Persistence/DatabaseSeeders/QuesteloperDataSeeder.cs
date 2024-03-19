@@ -13,6 +13,7 @@ internal sealed class QuesteloperDataSeeder(QuesteloperDbContext questeloperDbCo
         if (!questeloperDbContext.Categories.Any()) await GenerateCategories();
         if (!questeloperDbContext.Enemies.Any()) await GenerateEnemies();
         if (!questeloperDbContext.Questions.Any()) await GenerateQuestions();
+        if (!questeloperDbContext.Users.Any()) await GenerateUsers();
     }
     
     private async Task GenerateHeroes()
@@ -28,7 +29,7 @@ internal sealed class QuesteloperDataSeeder(QuesteloperDbContext questeloperDbCo
             .RuleFor(x => x.HeroClass, x => 
                 new HeroClass(x.PickRandom(heroesClasses)));
 
-        var heroesToSeed = heroesFaker.Generate(10);
+        var heroesToSeed = heroesFaker.Generate(2);
         await questeloperDbContext.Heroes.AddRangeAsync(heroesToSeed);
     }
     
@@ -38,7 +39,7 @@ internal sealed class QuesteloperDataSeeder(QuesteloperDbContext questeloperDbCo
             .RuleFor(x => x.CategoryName,
                 x => new CategoryName(x.Lorem.Word()));
 
-        var categoriesToSeed = categoriesFaker.Generate(10);
+        var categoriesToSeed = categoriesFaker.Generate(5);
         await questeloperDbContext.Categories.AddRangeAsync(categoriesToSeed);
         await questeloperDbContext.SaveChangesAsync();
     }
@@ -83,9 +84,24 @@ internal sealed class QuesteloperDataSeeder(QuesteloperDbContext questeloperDbCo
             .RuleFor(x => x.HealthPoints, x => new HealthPoints(x.Random.Int(1, 100)))
             .RuleFor(x => x.Level, x => new Level(x.Random.Int(1, 100)));
 
-        var enemiesToSeed = enemiesFaker.Generate(10);
+        var enemiesToSeed = enemiesFaker.Generate(3);
 
         await questeloperDbContext.Enemies.AddRangeAsync(enemiesToSeed);
+        await questeloperDbContext.SaveChangesAsync();
+    }
+    
+    private async Task GenerateUsers() 
+    {
+        var usersFaker = new Faker<User>()
+            .RuleFor(x => x.NickName, x => new NickName(x.Person.UserName))
+            .RuleFor(x => x.EmailAddress, x => new EmailAddress(x.Person.Email))
+            .RuleFor(x => x.FirstName, x => new FirstName(x.Person.FirstName))
+            .RuleFor(x => x.LastName, x => new LastName(x.Person.LastName))
+            .RuleFor(x => x.HashedPassword, x => new Password(x.Internet.Password()));
+
+        var usersToSeed = usersFaker.Generate(3);
+
+        await questeloperDbContext.Users.AddRangeAsync(usersToSeed);
         await questeloperDbContext.SaveChangesAsync();
     }
 

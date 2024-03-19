@@ -4,18 +4,21 @@ namespace Questeloper.Domain.ValueObjects;
 
 public sealed record HeroName
 {
+    private const int MinLength = 3;
+    private const int MaxLength = 250;
+    
     public string Value { get; }
 
     public HeroName(string value)
     {
         if (string.IsNullOrWhiteSpace(value))
         {
-            throw new HeroNameIsEmptyException();
+            throw new ValueIsEmptyException(nameof(HeroName));
         }
 
-        if (value.Length is > 250 or < 3)
+        if (value.Length is < MinLength or > MaxLength)
         {
-            throw new HeroNameIncorrectLengthException(value);
+            throw new ValueIncorrectLengthException(nameof(HeroName), MinLength, MaxLength);
         }
 
         Value = value;
