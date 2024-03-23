@@ -1,15 +1,21 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Questeloper.Application.Security;
+using Questeloper.Domain.Abstractions;
+using Questeloper.Domain.Entities;
 using Questeloper.Domain.Repositories;
 using Questeloper.Infrastructure.Middlewares;
 using Questeloper.Infrastructure.Persistence;
 using Questeloper.Infrastructure.Persistence.Configurations;
 using Questeloper.Infrastructure.Persistence.DatabaseSeeders;
 using Questeloper.Infrastructure.Persistence.Repositories;
+using Questeloper.Infrastructure.Security;
+using Questeloper.Infrastructure.Time;
 
 namespace Questeloper.Infrastructure;
 
@@ -30,6 +36,11 @@ public static class DependencyInjection
         services.AddScoped<IEnemyRepository, EnemyRepository>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
+        
+        services.AddSingleton<IClock, Clock>();
+        services
+            .AddSingleton<IPasswordHasher<User>, PasswordHasher<User>>()
+            .AddSingleton<IPasswordService, PasswordService>();
         
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen(swagger =>

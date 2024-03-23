@@ -9,18 +9,20 @@ public class User : EntityBase
     public FirstName FirstName { get; private set; }
     public LastName LastName { get; private set; }
     public NickName NickName { get; private set; }
+    public CreatedAt CreatedAt { get; private set; }
     
     public User()
     {
     }
     
-    public User(EmailAddress emailAddress, Password hashedPassword, FirstName firstName,
-        LastName lastName, NickName nickName)
+    public User(string emailAddress, string hashedPassword, string firstName,
+        string lastName, string nickName, DateTime createdAt)
     {
-        EmailAddress = emailAddress;
-        HashedPassword = hashedPassword;
-        FirstName = firstName;
-        LastName = lastName;
-        NickName = nickName;
+        EmailAddress = new EmailAddress(emailAddress);
+        HashedPassword = new Password(hashedPassword);
+        FirstName = new FirstName(firstName);
+        LastName = new LastName(lastName);
+        NickName = new NickName(nickName);
+        CreatedAt = new CreatedAt(createdAt);
     }
 }

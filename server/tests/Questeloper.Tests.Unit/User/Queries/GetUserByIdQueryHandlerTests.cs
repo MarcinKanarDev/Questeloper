@@ -6,7 +6,6 @@ using Questeloper.Application.User.Queries;
 using Questeloper.Application.User.Queries.Handlers;
 using Questeloper.Domain.Exceptions;
 using Questeloper.Domain.Repositories;
-using Questeloper.Domain.ValueObjects;
 
 namespace Questeloper.Tests.Unit.User.Queries;
 
@@ -26,12 +25,13 @@ public class GetUserByIdQueryHandlerTests
     {
         //Arrange
         var user = new Domain.Entities.User(
-            new EmailAddress("adres@emial.com "),
-            new Password("123456789"),
-            new FirstName("Nick"),
-            new LastName("Name"),
-            new NickName("NickName"));
-            ;
+            "adres@emial.com ",
+            "123456789",
+            "Nick",
+            "Name",
+            "NickName",
+            DateTime.Now);
+        
         var query = new GetUserByIdQuery(user.Id);
         
         _userRepository.GetByIdAsync(Arg.Any<int>()).Returns(user);

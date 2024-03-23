@@ -2,11 +2,11 @@
 using Questeloper.Domain.Exceptions;
 using Questeloper.Domain.Repositories;
 
-namespace Questeloper.Application.Hero.Commands.UpdateHeroCommand;
+namespace Questeloper.Application.Hero.Commands.UpdateHero;
 
-internal sealed class UpdateHeroCommandHandler(IHeroRepository heroRepository) : ICommandHandler<UpdateHeroCommand>
+internal sealed class UpdateHeroCommandHandler(IHeroRepository heroRepository) : ICommandHandler<UpdateHero.UpdateHeroCommand>
 {
-    public async Task Handle(UpdateHeroCommand request, CancellationToken cancellationToken)
+    public async Task Handle(UpdateHero.UpdateHeroCommand request, CancellationToken cancellationToken)
     {
         var heroes = await heroRepository.GetHeroesAsync();
 

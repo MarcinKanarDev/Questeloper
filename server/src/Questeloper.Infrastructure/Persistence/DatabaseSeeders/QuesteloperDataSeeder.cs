@@ -1,11 +1,12 @@
 ﻿using Bogus;
 using Microsoft.EntityFrameworkCore;
+using Questeloper.Domain.Abstractions;
 using Questeloper.Domain.Entities;
 using Questeloper.Domain.ValueObjects;
 
 namespace Questeloper.Infrastructure.Persistence.DatabaseSeeders;
 
-internal sealed class QuesteloperDataSeeder(QuesteloperDbContext questeloperDbContext)
+internal sealed class QuesteloperDataSeeder(QuesteloperDbContext questeloperDbContext, IClock clock)
 {
     internal async Task SeedAsync()
     {
@@ -37,7 +38,7 @@ internal sealed class QuesteloperDataSeeder(QuesteloperDbContext questeloperDbCo
     {
         var categoriesFaker = new Faker<Category>()
             .RuleFor(x => x.CategoryName,
-                x => new CategoryName(x.Lorem.Word()));
+                x => new CategoryName(x.Lorem.Sentence(3)));
 
         var categoriesToSeed = categoriesFaker.Generate(5);
         await questeloperDbContext.Categories.AddRangeAsync(categoriesToSeed);
@@ -97,9 +98,10 @@ internal sealed class QuesteloperDataSeeder(QuesteloperDbContext questeloperDbCo
             .RuleFor(x => x.EmailAddress, x => new EmailAddress(x.Person.Email))
             .RuleFor(x => x.FirstName, x => new FirstName(x.Person.FirstName))
             .RuleFor(x => x.LastName, x => new LastName(x.Person.LastName))
-            .RuleFor(x => x.HashedPassword, x => new Password(x.Internet.Password()));
+            .RuleFor(x => x.HashedPassword, x => new Password(x.Internet.Password()))
+            .RuleFor(x => x.CreatedAt, x => new CreatedAt(clock.Current));
 
-        var usersToSeed = usersFaker.Generate(3);
+        var usersToSeed = usersFaker.Generate(1);
 
         await questeloperDbContext.Users.AddRangeAsync(usersToSeed);
         await questeloperDbContext.SaveChangesAsync();

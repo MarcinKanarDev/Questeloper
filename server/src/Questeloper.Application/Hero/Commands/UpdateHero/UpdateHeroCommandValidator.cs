@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
 
-namespace Questeloper.Application.Hero.Commands.UpdateHeroCommand;
+namespace Questeloper.Application.Hero.Commands.UpdateHero;
 
-internal sealed class UpdateHeroCommandValidator : AbstractValidator<UpdateHeroCommand>
+internal sealed class UpdateHeroCommandValidator : AbstractValidator<UpdateHero.UpdateHeroCommand>
 {
     public UpdateHeroCommandValidator()
     {

@@ -40,5 +40,11 @@ internal sealed class UserConfiguration : IEntityTypeConfiguration<User>
             .HasConversion(n => n.Value,
                 n => new NickName(n))
             .IsRequired(false);
+
+        builder
+            .Property(u => u.CreatedAt)
+            .HasConversion(c => c.Value,
+                c => new CreatedAt(c))
+            .IsRequired();
     }
 }

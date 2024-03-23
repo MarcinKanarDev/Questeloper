@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using FluentValidation.TestHelper;
-using Questeloper.Application.Hero.Commands.UpdateHeroCommand;
+using Questeloper.Application.Hero.Commands.UpdateHero;
 
 namespace Questeloper.Tests.Unit.Hero.Commands;
 

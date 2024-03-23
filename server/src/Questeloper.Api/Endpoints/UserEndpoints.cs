@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Questeloper.Application.User.Commands.RegisterUser;
 using Questeloper.Application.User.Queries;
 
 namespace Questeloper.Api.Endpoints;
@@ -10,16 +11,22 @@ public static class UserEndpoints
 
     public static IEndpointRouteBuilder MapUserEndpoints(this IEndpointRouteBuilder app)
     {
-        var enemies = app.MapGroup(EndpointRoute)
+        var users = app.MapGroup(EndpointRoute)
             .WithTags("users");
         
-        enemies.MapGet("/", GetUsers)
+        users.MapPost("/", RegisterUser)
+            .Produces(StatusCodes.Status201Created, typeof(GetUserResponse))
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .WithName(nameof(RegisterUser))
+            .WithDescription("Create and register user account");
+        
+        users.MapGet("/", GetUsers)
             .Produces(StatusCodes.Status200OK, typeof(IEnumerable<GetUserResponse>))
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .WithName(nameof(GetUsers))
             .WithDescription("Get all users");
         
-        enemies.MapGet("/{id:int}", GetUserById)
+        users.MapGet("/{id:int}", GetUserById)
             .Produces(StatusCodes.Status200OK, typeof(GetUserResponse))
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status404NotFound)
@@ -27,6 +34,14 @@ public static class UserEndpoints
             .WithDescription("Get user by specific id");
 
         return app;
+    }
+    
+    private static async Task<IResult> RegisterUser([FromBody] RegisterUserCommand command,
+        [FromServices] ISender sender)
+    {
+        var result = await sender.Send(command);
+
+        return Results.Created(nameof(GetUserById), new { id = result.ToString()});
     }
     
     private static async Task<IResult> GetUsers([FromServices] ISender sender)

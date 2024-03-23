@@ -5,7 +5,7 @@ namespace Questeloper.Domain.ValueObjects;
 public sealed record Password
 {
     private const int MinLength = 8;
-    private const int MaxLength = 32;
+    private const int MaxLength = 128;
 
     public string Value { get; }
     

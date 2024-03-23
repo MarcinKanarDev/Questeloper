@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Questeloper.Application.Hero.Commands.CreateHero;
 using Questeloper.Application.Hero.Commands.DeleteHero;
-using Questeloper.Application.Hero.Commands.UpdateHeroCommand;
+using Questeloper.Application.Hero.Commands.UpdateHero;
 using Questeloper.Application.Hero.Queries;
 
 namespace Questeloper.Api.Endpoints;
