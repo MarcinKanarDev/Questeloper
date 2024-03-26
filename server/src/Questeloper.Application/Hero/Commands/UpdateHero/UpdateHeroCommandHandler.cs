@@ -4,9 +4,9 @@ using Questeloper.Domain.Repositories;
 
 namespace Questeloper.Application.Hero.Commands.UpdateHero;
 
-internal sealed class UpdateHeroCommandHandler(IHeroRepository heroRepository) : ICommandHandler<UpdateHero.UpdateHeroCommand>
+internal sealed class UpdateHeroCommandHandler(IHeroRepository heroRepository) : ICommandHandler<UpdateHeroCommand>
 {
-    public async Task Handle(UpdateHero.UpdateHeroCommand request, CancellationToken cancellationToken)
+    public async Task Handle(UpdateHeroCommand request, CancellationToken cancellationToken)
     {
         var heroes = await heroRepository.GetHeroesAsync();
 
@@ -16,7 +16,7 @@ internal sealed class UpdateHeroCommandHandler(IHeroRepository heroRepository) :
         }
 
         var hero = await heroRepository.GetByIdAsync(request.Id)
-                   ?? throw new HeroNotFoundException(request.Id);
+                   ?? throw new ResourceNotFoundException(nameof(Domain.Entities.Hero), request.Id);
 
         hero.ChangeHeroName(request.NewName);
         await heroRepository.CompleteAsync();

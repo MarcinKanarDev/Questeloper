@@ -10,7 +10,7 @@ internal sealed class GetEnemyByIdQueryHandler(IEnemyRepository enemyRepository)
     public async Task<GetEnemyResponse> Handle(GetEnemyByIdQuery request, CancellationToken cancellationToken)
     {
         var enemy = await enemyRepository.GetByIdAsync(request.Id)
-                    ?? throw new EnemyNotFoundException(request.Id);
+                    ?? throw new ResourceNotFoundException(nameof(Domain.Entities.Hero), request.Id);
         
         return enemy.ToResponse();
     }

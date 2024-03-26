@@ -12,7 +12,7 @@ internal sealed class DeleteHeroCommandHandler(IHeroRepository heroRepository) :
 
         if (hero is null)
         {
-            throw new HeroNotFoundException(request.HeroId);
+            throw new ResourceNotFoundException(nameof(Domain.Entities.Hero), request.HeroId);
         }
 
         await heroRepository.RemoveHero(hero);

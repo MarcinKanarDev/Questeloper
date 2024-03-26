@@ -53,7 +53,7 @@ public class GetHeroQueryHandlerTests
         _heroRepository.GetByIdAsync(Arg.Any<int>()).ReturnsNullForAnyArgs();
         
         //Assert
-        await Assert.ThrowsAsync<HeroNotFoundException>(() =>
+        await Assert.ThrowsAsync<ResourceNotFoundException>(() =>
             _queryHandler.Handle(query, CancellationToken.None));
     }
 }

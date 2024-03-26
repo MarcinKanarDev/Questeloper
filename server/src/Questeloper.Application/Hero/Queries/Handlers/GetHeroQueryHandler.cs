@@ -10,7 +10,7 @@ internal sealed class GetHeroQueryHandler(IHeroRepository heroRepository) : IQue
     {
         var hero = 
             await heroRepository.GetByIdAsync(request.HeroId)
-            ?? throw new HeroNotFoundException(request.HeroId);
+            ?? throw new ResourceNotFoundException(nameof(Domain.Entities.Hero), request.HeroId);
 
         return hero.ToResponse();
     }

@@ -49,7 +49,7 @@ public class GetEnemyByIdQueryHandlerTests
         _enemyRepository.GetByIdAsync(Arg.Any<int>()).ReturnsNullForAnyArgs();
         
         //Assert
-        await Assert.ThrowsAsync<EnemyNotFoundException>(() =>
+        await Assert.ThrowsAsync<ResourceNotFoundException>(() =>
             _queryHandler.Handle(query, CancellationToken.None));
     }
 }

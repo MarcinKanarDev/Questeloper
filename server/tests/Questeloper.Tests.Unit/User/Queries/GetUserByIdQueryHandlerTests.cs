@@ -55,7 +55,7 @@ public class GetUserByIdQueryHandlerTests
         _userRepository.GetByIdAsync(Arg.Any<int>()).ReturnsNullForAnyArgs();
         
         //Assert
-        await Assert.ThrowsAsync<UserNotFoundException>(() =>
+        await Assert.ThrowsAsync<ResourceNotFoundException>(() =>
             _queryHandler.Handle(query, CancellationToken.None));
     }
 }

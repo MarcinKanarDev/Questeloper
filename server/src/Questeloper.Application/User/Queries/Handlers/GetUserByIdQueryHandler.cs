@@ -10,7 +10,7 @@ internal sealed class GetUserByIdQueryHandler(IUserRepository userRepository)
     public async Task<GetUserResponse> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
     {
         var user = await userRepository.GetByIdAsync(request.Id)
-                   ?? throw new UserNotFoundException(request.Id);;
+                   ?? throw new ResourceNotFoundException(nameof(Domain.Entities.Hero), request.Id);;
 
         return user.ToResponse();
     }
