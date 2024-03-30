@@ -57,7 +57,7 @@ The third stage in the first instance assumes a time buffer for the delivery of 
 - FluentValidation
 - Minimal API
 - Serilog
-- XUnit, NSubstitute, Shouldly, TestContainers
+- XUnit, NSubstitute, FluentAssertions, TestContainers
 - Swagger for API documentation
 
 **Frontend side**
@@ -65,7 +65,7 @@ The third stage in the first instance assumes a time buffer for the delivery of 
 - HTML and CSS
 - Angular 17
 - NodeJS
-- Tailwind
+- Bootstrap
 
 **Others**
 - Docker
