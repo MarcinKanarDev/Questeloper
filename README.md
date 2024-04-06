@@ -153,4 +153,3 @@ git push origin feature/this-is-example-feature
 
 # Contact
 Email: marcinkanardev@gmail.com </br>
-Discord Username: abachaczi
