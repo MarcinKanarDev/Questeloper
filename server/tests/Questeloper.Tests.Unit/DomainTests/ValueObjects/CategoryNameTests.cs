@@ -42,7 +42,7 @@ public class CategoryNameTests
     public void Constructor_WhenValueIsIncorrectLength_ShouldThrowValueIncorrectLengthException(string invalidValue)
     {
         // Act
-        Action act = () => new CategoryName(invalidValue);
+        var act = () => new CategoryName(invalidValue);
 
         // Assert
         act.Should().Throw<ValueIncorrectLengthException>();
@@ -55,7 +55,7 @@ public class CategoryNameTests
         var categoryName = new CategoryName("Programming");
 
         // Act
-        string result = categoryName;
+        var result = categoryName;
         
         // Assert
         result.Should().Be("Programming");
