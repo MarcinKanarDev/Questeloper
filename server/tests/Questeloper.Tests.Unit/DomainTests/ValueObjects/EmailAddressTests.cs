@@ -28,7 +28,7 @@ public class EmailAddressTests
     public void Constructor_ForValidValue_ShouldNotThrow(string validEmail)
     {
         // Act
-        Action act = () => new EmailAddress(validEmail);
+        var act = () => new EmailAddress(validEmail);
 
         // Assert
         act.Should().NotThrow();

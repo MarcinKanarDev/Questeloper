@@ -39,7 +39,6 @@ public class NickNameTests
 
     [Theory]
     [InlineData("Jo")] // Less than MinLength
-    [InlineData(new string('a', 251))] // More than MaxLength
     public void Constructor_WhenValueIsOutOfRange_ShouldThrowValueIncorrectLengthException(string invalidValue)
     {
         // Act

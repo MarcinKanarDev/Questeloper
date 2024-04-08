@@ -31,7 +31,7 @@ public class PasswordTests
     public void Constructor_ForValidValue_ShouldNotThrow(string validValue)
     {
         // Act
-        Action act = () => new Password(validValue);
+        var act = () => new Password(validValue);
 
         // Assert
         act.Should().NotThrow();

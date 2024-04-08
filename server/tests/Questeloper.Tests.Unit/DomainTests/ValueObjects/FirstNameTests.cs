@@ -10,7 +10,7 @@ public class FirstNameTests
     public void Constructor_WhenValueIsNull_ShouldThrowValueIsEmptyException()
     {
         // Act
-        Action act = () => new FirstName(null);
+        var act = () => new FirstName(null);
 
         // Assert
         act.Should().Throw<ValueIsEmptyException>();
@@ -20,7 +20,7 @@ public class FirstNameTests
     public void Constructor_WhenValueIsWhitespace_ShouldThrowValueIsEmptyException()
     {
         // Act
-        Action act = () => new FirstName(" ");
+        var act = () => new FirstName(" ");
 
         // Assert
         act.Should().Throw<ValueIsEmptyException>();
@@ -31,7 +31,7 @@ public class FirstNameTests
     public void Constructor_ForValidValue_ShouldNotThrow(string validValue)
     {
         // Act
-        Action act = () => new FirstName(validValue);
+        var act = () => new FirstName(validValue);
 
         // Assert
         act.Should().NotThrow();
