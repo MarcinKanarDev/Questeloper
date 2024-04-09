@@ -23,8 +23,8 @@ public class EmailAddressTests
     }
 
     [Theory]
-    [InlineData("a@b.c")] // Minimum valid length
-    [InlineData("very.long.email.address@example.com")] // A longer valid example
+    [InlineData("a@b.c")]
+    [InlineData("very.long.email.address@example.com")]
     public void Constructor_ForValidValue_ShouldNotThrow(string validEmail)
     {
         // Act
