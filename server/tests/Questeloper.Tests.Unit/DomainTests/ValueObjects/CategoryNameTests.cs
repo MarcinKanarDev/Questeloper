@@ -55,7 +55,7 @@ public class CategoryNameTests
         var categoryName = new CategoryName("Programming");
 
         // Act
-        var result = categoryName;
+        string result = categoryName;
         
         // Assert
         result.Should().Be("Programming");
