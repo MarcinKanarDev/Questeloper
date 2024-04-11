@@ -64,7 +64,6 @@ The third stage in the first instance assumes a time buffer for the delivery of 
 - TypeScript
 - HTML and CSS
 - Angular 17
-- NodeJS
 - Bootstrap
 
 **Others**
