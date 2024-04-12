@@ -42,7 +42,6 @@ The second stage involves providing the client part of the application
 
 **Third-month delivery - technical details and buffer** </br>
 The third stage in the first instance assumes a time buffer for the delivery of requirements before the official end of the initiative. If the core business assumptions can be delivered on time, the remaining time will be used for technical details and implementation of additional technologies:
-- Containerization of applications using docker
 - Advanced application log management with Elasticsearch and Kibana deployment
 - Trying and learning how to deploy an application to a cloud system
 - Preparing a plan and learning how to implement CI/CD (Github Actions)
