@@ -10,7 +10,7 @@ public class EnemyNameTests
     public void Constructor_WhenValueIsNull_ShouldThrowValueIsEmptyException()
     {
         // Act
-        Action act = () => new EnemyName(null);
+        var act = () => new EnemyName(null);
 
         // Assert
         act.Should().Throw<ValueIsEmptyException>();
@@ -20,7 +20,7 @@ public class EnemyNameTests
     public void Constructor_WhenValueIsWhitespace_ShouldThrowValueIsEmptyException()
     {
         // Act
-        Action act = () => new EnemyName(" ");
+        var act = () => new EnemyName(" ");
 
         // Assert
         act.Should().Throw<ValueIsEmptyException>();
@@ -31,7 +31,7 @@ public class EnemyNameTests
     public void Constructor_ForValidValue_ShouldNotThrow(string validValue)
     {
         // Act
-        Action act = () => new EnemyName(validValue);
+        var act = () => new EnemyName(validValue);
 
         // Assert
         act.Should().NotThrow();

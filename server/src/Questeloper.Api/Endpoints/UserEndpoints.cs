@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Questeloper.Application.User.Commands.LoginUserCommand;
 using Questeloper.Application.User.Commands.RegisterUser;
 using Questeloper.Application.User.Queries;
 
@@ -19,6 +20,12 @@ public static class UserEndpoints
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .WithName(nameof(RegisterUser))
             .WithDescription("Create and register user account");
+        
+        users.MapPost("/", LoginUser)
+            .Produces(StatusCodes.Status204NoContent)
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .WithName(nameof(LoginUser))
+            .WithDescription("Login and authorize user to the application.");
         
         users.MapGet("/", GetUsers)
             .Produces(StatusCodes.Status200OK, typeof(IEnumerable<GetUserResponse>))
@@ -42,6 +49,14 @@ public static class UserEndpoints
         var result = await sender.Send(command);
 
         return Results.Created(nameof(GetUserById), new { id = result.ToString()});
+    }
+    
+    private static async Task<IResult> LoginUser([FromBody] LoginUserCommand command,
+        [FromServices] ISender sender)
+    {
+        await sender.Send(command);
+
+        return Results.NoContent();
     }
     
     private static async Task<IResult> GetUsers([FromServices] ISender sender)
