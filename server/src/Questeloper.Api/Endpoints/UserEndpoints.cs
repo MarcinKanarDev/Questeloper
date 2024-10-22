@@ -15,16 +15,16 @@ public static class UserEndpoints
         var users = app.MapGroup(EndpointRoute)
             .WithTags("users");
         
-        users.MapPost("/", RegisterUser)
+        users.MapPost($"/{nameof(Register).ToLower()}", Register)
             .Produces(StatusCodes.Status201Created, typeof(GetUserResponse))
             .ProducesProblem(StatusCodes.Status400BadRequest)
-            .WithName(nameof(RegisterUser))
+            .WithName(nameof(Register))
             .WithDescription("Create and register user account");
         
-        users.MapPost("/", LoginUser)
+        users.MapPost($"/{nameof(Login).ToLower()}", Login)
             .Produces(StatusCodes.Status204NoContent)
             .ProducesProblem(StatusCodes.Status400BadRequest)
-            .WithName(nameof(LoginUser))
+            .WithName(nameof(Login))
             .WithDescription("Login and authorize user to the application.");
         
         users.MapGet("/", GetUsers)
@@ -43,7 +43,7 @@ public static class UserEndpoints
         return app;
     }
     
-    private static async Task<IResult> RegisterUser([FromBody] RegisterUserCommand command,
+    private static async Task<IResult> Register([FromBody] RegisterUserCommand command,
         [FromServices] ISender sender)
     {
         var result = await sender.Send(command);
@@ -51,7 +51,7 @@ public static class UserEndpoints
         return Results.Created(nameof(GetUserById), new { id = result.ToString()});
     }
     
-    private static async Task<IResult> LoginUser([FromBody] LoginUserCommand command,
+    private static async Task<IResult> Login([FromBody] LoginUserCommand command,
         [FromServices] ISender sender)
     {
         await sender.Send(command);

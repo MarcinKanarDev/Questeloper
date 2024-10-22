@@ -2,7 +2,7 @@
 
 namespace Questeloper.Application.User.Commands.LoginUserCommand;
 
-public class LoginUserCommandHandler : ICommandHandler<LoginUserCommand>
+public sealed class LoginUserCommandHandler : ICommandHandler<LoginUserCommand>
 {
     public Task Handle(LoginUserCommand request, CancellationToken cancellationToken)
     {
