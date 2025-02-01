@@ -29,12 +29,6 @@ internal sealed class HeroConfiguration : IEntityTypeConfiguration<Hero>
             .HasMaxLength(100);
 
         builder
-            .Property(h => h.HeroClass)
-            .HasConversion(h => h.Value,
-                h => new HeroClass(h))
-            .IsRequired();
-
-        builder
             .Property(h => h.HealthPoints)
             .HasConversion(h => h.Points,
                 h => new HealthPoints(h))
@@ -45,5 +39,10 @@ internal sealed class HeroConfiguration : IEntityTypeConfiguration<Hero>
             .HasConversion(h => h.Points,
                 h => new ManaPoints(h))
             .IsRequired();
+
+        builder
+            .HasOne(h => h.HeroClass)
+            .WithMany(c => c.Heroes)
+            .HasForeignKey(e => e.HeroClassId);
     }
 }

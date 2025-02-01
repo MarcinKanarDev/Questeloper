@@ -36,7 +36,7 @@ public class GetHeroQueryHandlerTests
         //Assert
         result.Should().NotBeNull();
         result.Should().BeOfType<GetHeroResponse>();
-        result.HeroClass.Should().Be(hero.HeroClass.Value);
+        result.HeroClass.Should().Be(hero.HeroName.Value);
         result.Name.Should().Be(hero.HeroName.Value);
         result.Level.Should().Be(hero.Level.LevelValue);
         result.Experience.Should().Be(hero.Experience.ExperiencePoints);

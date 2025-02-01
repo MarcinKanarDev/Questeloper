@@ -6,11 +6,13 @@ public class Hero : EntityBase
 {
     public HeroName HeroName { get; private set; }
     public Level Level { get; private set; }
-    public HeroClass HeroClass { get; private set; }
     public Experience Experience { get; private set; }
     public HealthPoints HealthPoints { get; private set; }
     public ManaPoints ManaPoints { get; private set; }
 
+    // Relations
+    public int HeroClassId { get; set; }
+    public HeroClass HeroClass { get; private set; }
     public ICollection<Battle> Battles { get; set; }
 
     public Hero()

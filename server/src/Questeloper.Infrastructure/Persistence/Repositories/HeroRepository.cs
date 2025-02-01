@@ -10,7 +10,10 @@ internal sealed class HeroRepository(QuesteloperDbContext questeloperDbContext) 
         await questeloperDbContext.Heroes.FirstOrDefaultAsync(x => x.Id == id);
 
     public async Task<IEnumerable<Hero>> GetHeroesAsync() =>
-        await questeloperDbContext.Heroes.ToListAsync();
+        await questeloperDbContext.Heroes
+            .Include(h => h.HeroClass)
+            .AsNoTracking()
+            .ToListAsync();
 
     public async Task CreateHeroAsync(Hero hero) =>
         await questeloperDbContext.Heroes.AddAsync(hero);

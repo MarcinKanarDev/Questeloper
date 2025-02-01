@@ -10,6 +10,10 @@ if ([string]::IsNullOrWhiteSpace($migrationName)) {
         dotnet ef migrations add $migrationName -o ".\Persistence\Migrations" --startup-project "../Questeloper.Api"
 
         Write-Host "Migration '$migrationName' added successfully."
+	
+	Write-Host "Updating database..."
+	dotnet ef database update
+	Write-Host "Database updated!"
     } catch {
         Write-Host "An error occurred while adding the migration: $_"
     }

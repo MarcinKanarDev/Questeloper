@@ -1,16 +1,17 @@
 ﻿using Bogus;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Questeloper.Domain.Abstractions;
 using Questeloper.Domain.Entities;
 using Questeloper.Domain.ValueObjects;
 
 namespace Questeloper.Infrastructure.Persistence.DatabaseSeeders;
 
-internal sealed class QuesteloperDataSeeder(QuesteloperDbContext questeloperDbContext, IClock clock)
+internal sealed class QuesteloperDataSeeder(QuesteloperDbContext questeloperDbContext, ILogger<QuesteloperDataSeeder> logger, IClock clock)
 {
     private readonly string[] HeroClasses = { "Front-End Developer", "Back-End Developer", "Tester" };
 
-internal async Task SeedAsync()
+    internal async Task SeedAsync()
     {
         if (!questeloperDbContext.HeroClasses.Any()) await GenerateHeroClasses();
         if (!questeloperDbContext.Heroes.Any()) await GenerateHeroes();
@@ -20,33 +21,55 @@ internal async Task SeedAsync()
         if (!questeloperDbContext.Users.Any()) await GenerateUsers();
     }
 
+    #region Generators
+
     private async Task GenerateHeroClasses()
     {
-        var heroeClassesFaker = new Faker<HeroClass>()
-            .RuleFor(x => x.ClassName, x =>
-        new HeroClassName(x.PickRandom(HeroClasses)));
+        logger.LogInformation("Generating hero classes...");
 
-        var heroClassesToSeed = heroeClassesFaker.Generate(2);
+        var heroClassesToSeed = new List<HeroClass>();
+
+        foreach (var className in HeroClasses)
+        {
+            var heroeClassesFaker = new Faker<HeroClass>()
+                    .RuleFor(x => x.ClassName, x => new HeroClassName(className));
+
+            heroClassesToSeed.Add(heroeClassesFaker);
+        }
+
         await questeloperDbContext.HeroClasses.AddRangeAsync(heroClassesToSeed);
+        await questeloperDbContext.SaveChangesAsync();
+
+        logger.LogInformation("Generating hero classes succesful!");
     }
 
     private async Task GenerateHeroes()
-    {   
+    {
+        logger.LogInformation("Generating heroes...");
+
+        var heroClassIds = await questeloperDbContext.HeroClasses.Select(x => x.Id).ToListAsync();
+
         var heroesFaker = new Faker<Hero>()
             .RuleFor(x => x.Level, x => new Level(x.Random.Int(1, 100)))
             .RuleFor(x => x.HeroName, x => new HeroName(x.Person.UserName))
             .RuleFor(x => x.Experience, x => new Experience(x.Random.Int(1, 10000)))
             .RuleFor(x => x.HealthPoints, x => new HealthPoints(x.Random.Int(1, 100)))
             .RuleFor(x => x.ManaPoints, x => new ManaPoints(x.Random.Int(1, 100)))
+            .RuleFor(x => x.HeroClassId, x => x.PickRandom(heroClassIds))
             .RuleFor(x => x.HeroClass, x => 
                 new HeroClass(x.PickRandom(HeroClasses)));
 
         var heroesToSeed = heroesFaker.Generate(2);
         await questeloperDbContext.Heroes.AddRangeAsync(heroesToSeed);
+        await questeloperDbContext.SaveChangesAsync();
+
+        logger.LogInformation("Generating heroes succesful!");
     }
     
     private async Task GenerateCategories()
     {
+        logger.LogInformation("Generating categories...");
+
         var categoriesFaker = new Faker<Category>()
             .RuleFor(x => x.CategoryName,
                 x => new CategoryName(x.Lorem.Sentence(3)));
@@ -54,10 +77,14 @@ internal async Task SeedAsync()
         var categoriesToSeed = categoriesFaker.Generate(5);
         await questeloperDbContext.Categories.AddRangeAsync(categoriesToSeed);
         await questeloperDbContext.SaveChangesAsync();
+
+        logger.LogInformation("Generating categories succesful!");
     }
 
     private async Task GenerateQuestions()
     {
+        logger.LogInformation("Generating questions...");
+
         var categories = await questeloperDbContext.Categories.ToListAsync();
         var enemyIds = await questeloperDbContext.Enemies.Select(x => x.Id).ToListAsync();
         
@@ -87,10 +114,14 @@ internal async Task SeedAsync()
 
         await Task.WhenAll(addMultipleQuestionsTask, addTextAnswerQuestionsTask);
         await questeloperDbContext.SaveChangesAsync();
+
+        logger.LogInformation("Generating questions succesfull!");
     }
 
     private async Task GenerateEnemies() 
     {
+        logger.LogInformation("Generating enemies...");
+
         var enemiesFaker = new Faker<Enemy>()
             .RuleFor(x => x.Name, x => new EnemyName(x.Lorem.Word()))
             .RuleFor(x => x.HealthPoints, x => new HealthPoints(x.Random.Int(1, 100)))
@@ -100,10 +131,14 @@ internal async Task SeedAsync()
 
         await questeloperDbContext.Enemies.AddRangeAsync(enemiesToSeed);
         await questeloperDbContext.SaveChangesAsync();
+
+        logger.LogInformation("Generating enemies succesfull!");
     }
     
     private async Task GenerateUsers() 
     {
+        logger.LogInformation("Generating users...");
+
         var usersFaker = new Faker<User>()
             .RuleFor(x => x.NickName, x => new NickName(x.Person.UserName))
             .RuleFor(x => x.EmailAddress, x => new EmailAddress(x.Person.Email))
@@ -116,5 +151,9 @@ internal async Task SeedAsync()
 
         await questeloperDbContext.Users.AddRangeAsync(usersToSeed);
         await questeloperDbContext.SaveChangesAsync();
+
+        logger.LogInformation("Generating users succesfull!");
     }
+
+    # endregion
 }

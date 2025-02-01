@@ -1,4 +1,6 @@
-﻿namespace Questeloper.Application.Hero.Queries;
+﻿using Questeloper.Domain.Entities;
+
+namespace Questeloper.Application.Hero.Queries;
 
 internal static class Extensions
 {
@@ -9,5 +11,8 @@ internal static class Extensions
             hero.HeroClass.ClassName.Value,
             hero.Experience.ExperiencePoints,
             hero.HealthPoints.Points,
-            hero.ManaPoints.Points); 
+            hero.ManaPoints.Points);
+
+    public static GetHeroClassesResponse ToResponse(this HeroClass heroClass) =>
+        new GetHeroClassesResponse(heroClass.ClassName.Value);
 }
