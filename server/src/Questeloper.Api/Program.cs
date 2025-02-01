@@ -38,5 +38,5 @@ catch(Exception ex)
 }
 finally
 {
-    Log.CloseAndFlushAsync();
+    _ = Log.CloseAndFlushAsync();
 }

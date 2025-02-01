@@ -19,6 +19,8 @@ internal sealed class ExceptionHandlingMiddleware(ILogger<ExceptionHandlingMiddl
             logger.LogError(exception.Message);
             
             await HandleExceptionAsync(exception, context);
+
+            throw;
         }
     }
 
@@ -28,7 +30,7 @@ internal sealed class ExceptionHandlingMiddleware(ILogger<ExceptionHandlingMiddl
         {
             CustomException customException =>
                 new ApiError(customException.StatusCode, customException.Message),
-            ValidationException validationException => 
+            ValidationException validationException =>
                 new ApiError(HttpStatusCode.BadRequest, "Request validation error.",
                     GetErrors(validationException)),
             _ =>
