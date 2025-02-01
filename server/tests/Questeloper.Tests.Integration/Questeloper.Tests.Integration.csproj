@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Questeloper.Api\Questeloper.Api.csproj" />
+    <ProjectReference Include="..\..\src\Questeloper.Infrastructure\Questeloper.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

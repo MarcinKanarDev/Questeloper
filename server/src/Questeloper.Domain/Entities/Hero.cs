@@ -17,11 +17,11 @@ public class Hero : EntityBase
     {
     }
 
-    public Hero(string name, HeroClass heroClass)
+    public Hero(string name, HeroClassName heroClass)
     {
         HeroName = new HeroName(name);
         Level = new Level(1);
-        HeroClass = heroClass;
+        HeroClass = new HeroClass(heroClass.Value);
         Experience = new Experience(0);
         HealthPoints = new HealthPoints(100);
         ManaPoints = new ManaPoints(100);

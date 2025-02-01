@@ -135,7 +135,7 @@ namespace Questeloper.Infrastructure.Persistence.Migrations
                     b.Property<int>("HealthPoints")
                         .HasColumnType("integer");
 
-                    b.Property<string>("HeroClass")
+                    b.Property<string>("HeroClassConfiguration")
                         .IsRequired()
                         .HasColumnType("text");
 

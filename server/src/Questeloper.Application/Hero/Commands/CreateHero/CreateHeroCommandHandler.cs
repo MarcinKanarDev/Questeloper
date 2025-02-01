@@ -9,7 +9,7 @@ internal sealed class CreateHeroCommandHandler(IHeroRepository heroRepository)
 {
     public async Task<int> Handle(CreateHeroCommand request, CancellationToken cancellationToken)
     {
-        var hero = new Domain.Entities.Hero(request.Name, new HeroClass(request.HeroClass));
+        var hero = new Domain.Entities.Hero(request.Name, new HeroClassName(request.HeroClass));
         
         await heroRepository.CreateHeroAsync(hero);
         await heroRepository.CompleteAsync();

@@ -34,6 +34,12 @@ public static class HeroEndpoints
             .WithName(nameof(GetHeroes))
             .WithDescription("Get all heroes");
 
+        heroes.MapGet("/hero-classes", GetHeroes)
+            .Produces(StatusCodes.Status200OK, typeof(IEnumerable<GetHeroClassesResponse>))
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .WithName(nameof(GetHeroClasses))
+            .WithDescription("Get available hero classes");
+
         heroes.MapPut("/", UpdateHero)
             .Produces(StatusCodes.Status204NoContent)
             .ProducesProblem(StatusCodes.Status400BadRequest)
@@ -83,6 +89,22 @@ public static class HeroEndpoints
         var query = new GetAllHeroesQuery();
         var result = await sender.Send(query);
         
+        return Results.Ok(result);
+    }
+
+    private static async Task<IResult> GetHeroClasses([FromServices] ISender sender)
+    {
+        var query = new GetHeroClassesQuery();
+        var result = await sender.Send(query);
+
+        return Results.Ok(result);
+    }
+
+    private static async Task<IResult> GetClasses([FromServices] ISender sender)
+    {
+        var query = new GetAllHeroesQuery();
+        var result = await sender.Send(query);
+
         return Results.Ok(result);
     }
 }

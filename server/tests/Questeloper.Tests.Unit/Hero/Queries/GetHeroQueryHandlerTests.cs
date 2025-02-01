@@ -25,7 +25,7 @@ public class GetHeroQueryHandlerTests
     public async Task GetHeroQueryHandler_ForValidQuery_ShouldReturnCorrectGetHeroResponse()
     {
         //Arrange
-        var hero = new Domain.Entities.Hero("Hero", new HeroClass("Backend Developer"));
+        var hero = new Domain.Entities.Hero("Hero", new HeroClassName("Backend Developer"));
         var query = new GetHeroQuery(hero.Id);
         
         _heroRepository.GetByIdAsync(Arg.Any<int>()).Returns(hero);

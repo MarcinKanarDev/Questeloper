@@ -8,19 +8,30 @@ namespace Questeloper.Infrastructure.Persistence.DatabaseSeeders;
 
 internal sealed class QuesteloperDataSeeder(QuesteloperDbContext questeloperDbContext, IClock clock)
 {
-    internal async Task SeedAsync()
+    private readonly string[] HeroClasses = { "Front-End Developer", "Back-End Developer", "Tester" };
+
+internal async Task SeedAsync()
     {
+        if (!questeloperDbContext.HeroClasses.Any()) await GenerateHeroClasses();
         if (!questeloperDbContext.Heroes.Any()) await GenerateHeroes();
         if (!questeloperDbContext.Categories.Any()) await GenerateCategories();
         if (!questeloperDbContext.Enemies.Any()) await GenerateEnemies();
         if (!questeloperDbContext.Questions.Any()) await GenerateQuestions();
         if (!questeloperDbContext.Users.Any()) await GenerateUsers();
     }
-    
-    private async Task GenerateHeroes()
+
+    private async Task GenerateHeroClasses()
     {
-        var heroesClasses = new[] { "Front-End Developer", "Back-End Developer", "Tester" };
-        
+        var heroeClassesFaker = new Faker<HeroClass>()
+            .RuleFor(x => x.ClassName, x =>
+        new HeroClassName(x.PickRandom(HeroClasses)));
+
+        var heroClassesToSeed = heroeClassesFaker.Generate(2);
+        await questeloperDbContext.HeroClasses.AddRangeAsync(heroClassesToSeed);
+    }
+
+    private async Task GenerateHeroes()
+    {   
         var heroesFaker = new Faker<Hero>()
             .RuleFor(x => x.Level, x => new Level(x.Random.Int(1, 100)))
             .RuleFor(x => x.HeroName, x => new HeroName(x.Person.UserName))
@@ -28,7 +39,7 @@ internal sealed class QuesteloperDataSeeder(QuesteloperDbContext questeloperDbCo
             .RuleFor(x => x.HealthPoints, x => new HealthPoints(x.Random.Int(1, 100)))
             .RuleFor(x => x.ManaPoints, x => new ManaPoints(x.Random.Int(1, 100)))
             .RuleFor(x => x.HeroClass, x => 
-                new HeroClass(x.PickRandom(heroesClasses)));
+                new HeroClass(x.PickRandom(HeroClasses)));
 
         var heroesToSeed = heroesFaker.Generate(2);
         await questeloperDbContext.Heroes.AddRangeAsync(heroesToSeed);
@@ -106,5 +117,4 @@ internal sealed class QuesteloperDataSeeder(QuesteloperDbContext questeloperDbCo
         await questeloperDbContext.Users.AddRangeAsync(usersToSeed);
         await questeloperDbContext.SaveChangesAsync();
     }
-
 }

@@ -11,6 +11,7 @@ internal class QuesteloperDbContext(DbContextOptions<QuesteloperDbContext> optio
     public DbSet<Battle> Battles { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Question> Questions { get; set; }
+    public DbSet<HeroClass> HeroClasses { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

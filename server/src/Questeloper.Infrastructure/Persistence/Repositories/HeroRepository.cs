@@ -17,7 +17,10 @@ internal sealed class HeroRepository(QuesteloperDbContext questeloperDbContext) 
 
     public Task RemoveHero(Hero hero) =>
         Task.FromResult(questeloperDbContext.Heroes.Remove(hero));
-    
+
+    public async Task<IEnumerable<HeroClass>> GetHeroClasses() =>
+    await questeloperDbContext.HeroClasses.ToListAsync();
+
     public async Task CompleteAsync() =>
         await questeloperDbContext.SaveChangesAsync();
 }
