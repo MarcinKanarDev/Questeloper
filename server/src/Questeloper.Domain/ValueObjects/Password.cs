@@ -9,7 +9,7 @@ public sealed record Password
 
     public string Value { get; }
     
-    public Password(string value)
+    public Password(string? value)
     {
         if (string.IsNullOrWhiteSpace(value))
         {

@@ -4,7 +4,7 @@ namespace Questeloper.Domain.Entities;
 
 public class Category : EntityBase
 {
-    public CategoryName CategoryName { get; init; }
+    public required CategoryName CategoryName { get; init; }
 
-    public ICollection<Question> Questions { get; set; }
+    public ICollection<Question>? Questions { get; set; }
 }

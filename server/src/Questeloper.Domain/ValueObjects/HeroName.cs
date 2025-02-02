@@ -9,7 +9,7 @@ public sealed record HeroName
     
     public string Value { get; }
 
-    public HeroName(string value)
+    public HeroName(string? value)
     {
         if (string.IsNullOrWhiteSpace(value))
         {

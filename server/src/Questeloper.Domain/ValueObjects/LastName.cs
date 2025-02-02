@@ -9,7 +9,7 @@ public sealed record LastName
     
     public string Value { get; }
     
-    public LastName(string value)
+    public LastName(string? value)
     {
         if (string.IsNullOrWhiteSpace(value))
         {

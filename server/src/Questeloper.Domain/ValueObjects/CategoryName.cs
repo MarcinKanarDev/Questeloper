@@ -9,7 +9,7 @@ public sealed record CategoryName
     
     public string Value { get; }
 
-    public CategoryName(string value)
+    public CategoryName(string? value)
     {
         if (string.IsNullOrWhiteSpace(value))
         {

@@ -10,7 +10,7 @@ public sealed record EmailAddress
     
     public string Value { get; }
     
-    public EmailAddress(string value)
+    public EmailAddress(string? value)
     {
         if (string.IsNullOrWhiteSpace(value))
         {

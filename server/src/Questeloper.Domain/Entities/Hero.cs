@@ -4,18 +4,18 @@ namespace Questeloper.Domain.Entities;
 
 public class Hero : EntityBase
 {
-    public HeroName HeroName { get; private set; }
-    public Level Level { get; private set; }
-    public Experience Experience { get; private set; }
-    public HealthPoints HealthPoints { get; private set; }
-    public ManaPoints ManaPoints { get; private set; }
+    public HeroName HeroName { get; private set; } = null!;
+    public Level Level { get; private set; } = null!;
+    public Experience Experience { get; private set; } = null!;
+    public HealthPoints HealthPoints { get; private set; } = null!;
+    public ManaPoints ManaPoints { get; private set; } = null!;
 
     // Relations
     public int HeroClassId { get; set; }
-    public HeroClass HeroClass { get; private set; }
-    public ICollection<Battle> Battles { get; set; }
+    public HeroClass HeroClass { get; private set; } = null!;
+    public ICollection<Battle>? Battles { get; set; }
 
-    public Hero()
+    private Hero()
     {
     }
 

@@ -2,5 +2,5 @@
 
 public class TextAnswerQuestion : Question
 {
-    public string CorrectAnswer { get; private set; }
+    public string CorrectAnswer { get; private set; } = string.Empty;
 }

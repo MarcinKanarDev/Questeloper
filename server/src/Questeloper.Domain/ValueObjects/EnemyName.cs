@@ -9,7 +9,7 @@ public sealed record EnemyName
     
     public string Value { get; }
 
-    public EnemyName(string value)
+    public EnemyName(string? value)
     {
         if (string.IsNullOrWhiteSpace(value))
         {
